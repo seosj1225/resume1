@@ -1,29 +1,60 @@
+
 let saveY = window.scrollY;
 let timer;
 let currentStep = 0;
 let windowHeight = 0;
+let isScrollLock = false;
 
-const sections = document.querySelectorAll('section')
-function onScroll() {
-    if(timer) {
-        clearTimeout(timer);
-    }
-    timer = setTimeout(changeSection, 100);
+const INIT_COUNT = 20;
+let count = INIT_COUNT;
+
+const sections = document.querySelectorAll('section');
+
+function onScroll(e) {
+    if(!isScrollLock) {
+        isScrollLock = true;
+        changeSection();
+    }    
 }
 
 function changeSection() {
     const isDown = saveY < window.scrollY;
     const isUp = saveY > window.scrollY;
-    if(isDown) {
+    if(isDown && currentStep < 3) {
         currentStep++;
-        const targetScrollY = windowHeight*currentStep;
-        window.scrollTo(0, targetScrollY);
-        saveY = targetScrollY;
-    } else if(isUp) {
+        move();
+    } else if(isUp && currentStep > 0) {
         currentStep--;
-        const targetScrollY = windowHeight*currentStep;
-        window.scrollTo(0, targetScrollY);
+        move();
+    }
+}
+
+
+function move() {
+    const targetScrollY = windowHeight*currentStep;
+    const gap = (targetScrollY - window.scrollY)/count;
+
+    if(count > 0) {
+        --count;
+        window.scrollTo(0, window.scrollY + gap);
+        window.requestAnimationFrame(move);
+    } else {
         saveY = targetScrollY;
+        count = INIT_COUNT;
+        isScrollLock = false;
+
+        setNavClass();
+    }
+}
+
+function setNavClass() {
+    const navs = document.querySelectorAll('.nav_left > li');
+    for(var i = 0; i<navs.length; i++) {
+        if( i === currentStep) {
+            navs[i].classList.add('on');
+        } else {
+            navs[i].classList.remove('on');
+        }
     }
 }
 
@@ -38,3 +69,9 @@ changeSectionSize();
 document.addEventListener('scroll', onScroll)
 window.addEventListener('resize', changeSectionSize)
 
+
+function onClickMenu(sectionNum) {
+    isScrollLock = true;
+    currentStep = sectionNum;
+    move();
+}
