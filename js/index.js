@@ -8,26 +8,29 @@ function onScroll() {
     if(timer) {
         clearTimeout(timer);
     }
-    timer = setTimeout(changeSection, 1000);
+    timer = setTimeout(changeSection, 100);
 }
 
 function changeSection() {
     const isDown = saveY < window.scrollY;
+    const isUp = saveY > window.scrollY;
     if(isDown) {
         currentStep++;
+        const targetScrollY = windowHeight*currentStep;
+        window.scrollTo(0, targetScrollY);
+        saveY = targetScrollY;
+    } else if(isUp) {
+        currentStep--;
+        const targetScrollY = windowHeight*currentStep;
+        window.scrollTo(0, targetScrollY);
+        saveY = targetScrollY;
     }
-    console.log('targetScrollY', targetScrollY)
-    console.log('targetScrollY', targetScrollY)
-    const targetScrollY = windowHeight*currentStep;
-    console.log('targetScrollY', targetScrollY)
-    window.scrollTo(0, targetScrollY);
-    console.log(currentStep)
 }
 
 function changeSectionSize() {
-    windowHeight = screen.height;
+    windowHeight = window.innerHeight;
     for( var i = 0; i<sections.length; i++) {
-        sections[i].style.height = `${window.innerHeight}px`;
+        sections[i].style.height = `${windowHeight}px`;
     }
 }
 changeSectionSize();

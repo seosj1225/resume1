@@ -8,6 +8,7 @@ body>div{
 /* header */
 header{
     width:100%;
+    max-width: 1080px;
     display:flex;
     align-items: center;
     position:fixed;
