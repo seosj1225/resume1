@@ -64,14 +64,31 @@ function changeSectionSize() {
         sections[i].style.height = `${windowHeight}px`;
     }
 }
-changeSectionSize();
+//changeSectionSize();
 
-document.addEventListener('scroll', onScroll)
-window.addEventListener('resize', changeSectionSize)
+//document.addEventListener('scroll', onScroll)
+//window.addEventListener('resize', changeSectionSize)
 
 
 function onClickMenu(sectionNum) {
     isScrollLock = true;
     currentStep = sectionNum;
     move();
+}
+
+
+const pcPortfolio = document.querySelector('#pc');
+const mobilePortfolio = document.querySelector('#mobile');
+
+function showPortfolio(filter) {
+    if (filter === 'pc') {
+        pcPortfolio.style.display = 'flex';
+        mobilePortfolio.style.display = 'none';
+    } else if (filter === 'mobile'){
+        pcPortfolio.style.display = 'none';
+        mobilePortfolio.style.display = 'flex';
+    } else {
+        pcPortfolio.style.display = 'flex';
+        mobilePortfolio.style.display = 'flex';
+    }
 }

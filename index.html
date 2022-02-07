@@ -7,29 +7,32 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/index.css">
+    <script src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script src="js/jquery.easypiechart.min.js"></script>
+    <script src="js/myscripts.js"></script>
 </head>
 <body>
      <div>
          <header>
-             <h1>LOGO</h1>
+             <h1>SEO SEJUNG</h1>
              <div class="nav">
                  <ul>
-                     <li><button onclick="onClickMenu(0)">섹션1</button></li>
-                     <li><button onclick="onClickMenu(1)">섹션2</button></li>
-                     <li><button onclick="onClickMenu(2)">섹션3</button></li>
-                     <li><button onclick="onClickMenu(3)">섹션4</button></li>
+                     <li><a href="#none">"Who I am"</a></li>
+                     <li><a href="#none">SKILLS</a></li>
+                     <li><a href="#none">PORTFOLIO</a></li>
+                     <li><a href="#none">Contact Me!!</a></li>
                  </ul>
              </div>
          </header>
-         <ul class="nav_left">
+         <!-- <ul class="nav_left">
              <li><button></button></li>
              <li><button></button></li>
              <li><button></button></li>
              <li><button></button></li>
-         </ul>
+         </ul> -->
          <main>
-             <section>
-                 <h2>섹션1</h2>
+             <section id="section1">
+                 <h2>" Who I am"</h2>
                  <div>
                      <ul class="items">
                         <li>
@@ -40,89 +43,152 @@
                         </li>
                          <li>
                              <dl>
-                                <dt>생년월일</dt>
-                                <dd>891225</dd>
+                                <dt>관심사</dt>
+                                <dd>등산, 운동</dd>
                          </dl>
                         </li>
                          <li>
                             <dl>
                                 <dt>이력</dt>
-                                <dd>회사생활 및 학원수료</dd>
+                                <dd>1. 한양사이버대학졸업(호텔관광외식서비스학과)<br/>
+                                    2. 호주어학연수(1년) <br/>
+                                    3. 회사생활(관리직, 8년근속)<br/>
+                                    4. 그린컴퓨터학원 수료(21년11월~22년5월)
+                                </dd>
                             </dl>
                         </li>
                          <li>
                              <dl>
-                                <dt>좌우명</dt>
-                                <dd>열심히살자</dd>
+                                <dt>취미</dt>
+                                <dd>자전거, 농구<br/>
+                                    맛집 및 카페 탐방<br/>
+                                    여행<br/>
+                                </dd>
                             </dl>
                         </li>
                      </ul>
                  </div>
              </section>
-             <section>
-                <h2>섹션2</h2>
+             <section  id="section2">
+                <h2>SKILLS</h2>
                 <div>
                     <ul class="items">
                        <li>
                            <dl>
                                <dt>HTML</dt>
-                               <dd>그래프</dd>
+                               <dd class="graph" data-percent="90"></dd>
                            </dl>
                        </li>
                         <li>
                             <dl>
                                <dt>CSS</dt>
-                               <dd>그래프</dd>
+                               <dd class="graph" data-percent="75"></dd>
                         </dl>
                        </li>
                         <li>
                            <dl>
                                <dt>JS</dt>
-                               <dd>그래프</dd>
+                               <dd class="graph" data-percent="60"></dd>
                            </dl>
                        </li>
                         <li>
                             <dl>
                                <dt>JQUARY</dt>
-                               <dd>그래프</dd>
+                               <dd class="graph" data-percent="40"></dd>
                            </dl>
                        </li>
                     </ul>
                 </div>
             </section>
-            <section>
-                <h2>섹션3</h2>
+            <section id="section3">
+                <h2>PORTFOLIO</h2>
                 <div>
-                    <ul class="items">
+                    <button onclick="showPortfolio('all')">전체</button>
+                    <button onclick="showPortfolio('pc')">PC</button>
+                    <button onclick="showPortfolio('mobile')">MOBILE</button>
+                </div>
+                <div>
+                    <ul class="items" id="pc">
                        <li>
                            <dl>
-                               <dt>포트폴리오</dt>
-                               <dd><img src="" alt=""></dd>
+                               <dt>pc</dt>
+                               <dd><img src="img/p1.PNG" alt=""></dd>
                            </dl>
                        </li>
                         <li>
                             <dl>
-                                <dt>포트폴리오</dt>
-                                <dd><img src="" alt=""></dd>
+                                <dt>pc</dt>
+                                <dd><img src="img/p2.PNG" alt=""></dd>
                          </dl>
                        </li>
                         <li>
                            <dl>
-                            <dt>포트폴리오</dt>
-                            <dd><img src="" alt=""></dd>
+                            <dt>pc</dt>
+                            <dd><img src="img/p3.PNG" alt=""></dd>
                         </dl>
                        </li>
                         <li>
                             <dl>
-                                <dt>포트폴리오</dt>
-                                <dd><img src="" alt=""></dd>
+                                <dt>pc</dt>
+                                <dd><img src="img/p2.PNG" alt=""></dd>
                             </dl>
                        </li>
                     </ul>
+                    <ul class="items" id="mobile">
+                        <li>
+                            <dl>
+                                <dt>mobile</dt>
+                                <dd><img src="img/p2.PNG" alt=""></dd>
+                            </dl>
+                        </li>
+                         <li>
+                             <dl>
+                                 <dt>mobile</dt>
+                                 <dd><img src="img/p1.PNG" alt=""></dd>
+                          </dl>
+                        </li>
+                         <li>
+                            <dl>
+                             <dt>mobile</dt>
+                             <dd><img src="img/p3.PNG" alt=""></dd>
+                         </dl>
+                        </li>
+                         <li>
+                             <dl>
+                                 <dt>mobile</dt>
+                                 <dd><img src="img/p1.PNG" alt=""></dd>
+                             </dl>
+                        </li>
+                     </ul>
                 </div>
             </section>
-            <section>
-                <h2>섹션4</h2>
+            <section id="section4">
+                <h2>Contact Me!!</h2>
+                <form action="#" method="post" name="contact" class="form1">
+            		<table class="contact">
+						<colgroup>
+							<col class="col1">
+							<col class="col2">
+						</colgroup>
+            			<tr>
+            				<th scope="row"><label for="irum">이름</label></th>
+            				<td><input type="text" id="irum" name="irum" placeholder=" Name"></td>
+            			</tr>
+            			<tr>
+            				<th scope="row"><label for="email">이메일</label></th>
+            				<td><input type="email" id="email" placeholder=" E-mail" name="email"></td>
+            			</tr>
+            			<tr>
+            				<th scope="row"><label for="phone">연락처</label></th>
+            				<td><input type="text" id="phone" name="phone" placeholder=" Phone(-생략)"></td>
+            			</tr>
+            			<tr>
+            				<th scope="row" class="memo"><label for="memo">메모</label></th>
+            				<td><textarea name="memo" id="memo" placeholder=" 200자 이내로 작성해주세요" maxlength="200"></textarea></td>
+            			</tr>
+            		</table>
+            		<p><button type="submit">보내기</button></p>
+            	</form>
             </section>
         </main>
         
